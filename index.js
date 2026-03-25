@@ -3,6 +3,7 @@ import mongoConnection from './db.js'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import userRoutes from './routes/authRoutes.js'
+import cookieParser from 'cookie-parser'
 
 dotenv.config()
 
@@ -10,7 +11,11 @@ const app = express()
 app.use(express.json()) 
 
 mongoConnection();
-app.use(cors())
+app.use(cookieParser())
+app.use(cors({
+    origin:['http://localhost:5173', 'http://localhost:5174'],
+    credentials:true
+}))
 
 const PORT = process.env.PORT
 
