@@ -16,6 +16,9 @@ const postSchema = new mongoose.Schema({
             },
             mediaUrl: {
                 type: String
+            },
+            publicId: {
+                type: String
             }
         }
     ],
